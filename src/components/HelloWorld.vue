@@ -1,26 +1,19 @@
 <template>
-    <div class="header"></div>
-    <div class="body">
-      <div class="aside"></div>
-      <div class="main"></div>
-    </div>
-    <div class="fotter"></div>
+  <h1>{{ msg }}</h1>
+  <button @click="count++">count is: {{ count }}</button>
+  <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      count: 0
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.header{
-  height: 10%;
-  background: black;
-  width: 100%;
-}
-</style>
