@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import main from "../views/main.vue"
+import editor from "../views/md-editor.vue"
 
 const routes = [
     {
         path:'/main',
         name:"Main",
         component: main
+    },
+    {
+        path:'/editor',
+        name:"editor",
+        component:editor
     }
 ]
 
