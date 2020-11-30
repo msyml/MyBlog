@@ -1,10 +1,10 @@
 <template>
   <h1>{{ msg }}</h1>
-  <el-button @click="count++">count is: {{ count }}</el-button>
+  <button @click="count++">count is: {{ count }}</button>
   <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'HelloWorld',
   props: {
