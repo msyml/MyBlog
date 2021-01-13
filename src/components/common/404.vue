@@ -6,7 +6,6 @@
 <style scoped>
 @import "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap";
 
-
 div {
   display: flex;
   justify-content: center;
@@ -14,7 +13,6 @@ div {
   min-height: 100vh;
   background: linear-gradient(
     45deg,
-    transparent 3%,
     #ff013c 3%,
     #ff013c 5%,
     #000 5%
