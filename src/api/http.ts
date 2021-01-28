@@ -23,6 +23,7 @@ const errorHandle = (status, other) => {
         case 404:
             ElMessage.error("请求的资源不存在");
             break;
+            
         default:
             ElMessage.error(other);
     }
@@ -36,6 +37,10 @@ export function myRequest(baseUrl, url: string, params = {},method?: RequestMeth
         if (method === null || method === RequestMethod.POST) {
             axios.post(url, params , {headers: header,baseURL:baseUrl})
             .then(res => {
+                if (res.data.code === 401) {
+                    toLogin();
+                    return;
+                }
                 resolve(res.data);
             })
             .catch(err => {
