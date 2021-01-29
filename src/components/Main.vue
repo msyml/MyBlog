@@ -12,31 +12,21 @@
 
 <script lang="ts">
 import { getUserInfo } from '../api/api'
+import { Options, Vue } from 'vue-class-component'
 
-export default {
-  name: "Main",
-  props: {
-    msg: String,
-  },
-  components: {},
-  data() {
-    return {};
-  },
+@Options({})
+export default class extends Vue {
   mounted() {
     this.getInfo()
-  },
-  methods: {
-    getInfo(){
-      let para = {
-        name:"chenhai"
-      }
-      getUserInfo(para).then((result) => {
-        
-      }).catch((err) => {
-        
-      });;
-    }
   }
-};
+  getInfo() {
+    const para = {
+      name: 'chenhai'
+    }
+    getUserInfo(para).then((result) => {
+      // do
+    })
+  }
+}
 </script>
 <style scoped></style>

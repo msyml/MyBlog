@@ -8,5 +8,10 @@ export enum RequestMethod {
     GET = 2,
 }
 
+export interface LoginForm{
+    username: string;
+    password: string;
+}
+
 
 
