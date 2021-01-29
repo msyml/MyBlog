@@ -2,23 +2,25 @@
   <div class="login_body">
     <el-card shadow="always" class="login_card">
       <h3>系统登录</h3>
-      <el-form>
-        <el-form-item>
+      <el-form :model="loginForm">
+        <el-form-item prop="username">
           <el-input
             prefix-icon="el-icon-user"
             placeholder="在此输入帐号"
+            v-model="loginForm.username"
           ></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input
             prefix-icon="el-icon-lock"
             placeholder="在此输入密码"
             type="password"
+            v-model="loginForm.password"
           ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button>注册</el-button>
-          <el-button type="primary">登录</el-button>
+          <el-button type="primary" @click="Login">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -26,13 +28,24 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-// import { LoginForm } from "interface";
+import { LoginForm } from '../api/param'
+import { loginApi } from '../api/api'
 
 @Options({})
 export default class Login extends Vue {
-  private loginForm: object = {
+  private loginForm: LoginForm = {
     username: '',
     password: ''
+  }
+
+  private async Login() {
+    const para = {
+      ...this.loginForm
+    }
+    await loginApi(para).then((res) => {
+      localStorage.setItem('token', res.token)
+      this.$router.push('main')
+    })
   }
 }
 </script>

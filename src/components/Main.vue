@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { getUserInfo } from '../api/api'
+import { getUserInfoApi } from '../api/api'
 import { Options, Vue } from 'vue-class-component'
 
 @Options({})
@@ -19,11 +19,11 @@ export default class extends Vue {
   mounted() {
     this.getInfo()
   }
-  getInfo() {
+  async getInfo() {
     const para = {
       name: 'chenhai'
     }
-    getUserInfo(para).then((result) => {
+    await getUserInfoApi(para).then((result) => {
       // do
     })
   }

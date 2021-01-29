@@ -1,10 +1,11 @@
-import { myRequest } from "./http";
-import devConstants from "../common/constants-dev";
-import prdConstants from "../common/constants-prd";
+import { myRequest } from './http'
+import devConstants from '../common/constants-dev'
+import prdConstants from '../common/constants-prd'
 
-const constants = process.env.NODE_ENV === "production" ? prdConstants: devConstants;
+const constants =
+  process.env.NODE_ENV === 'production' ? prdConstants : devConstants
 const openApiUrl = `${constants.openApiUrl}`
-const myApiUrl = `${constants.myApiUrl}` 
+const myApiUrl = `${constants.myApiUrl}`
 
 // 开放接口，实时段子
 // export const getJoke = params => {
@@ -12,6 +13,15 @@ const myApiUrl = `${constants.myApiUrl}`
 // }
 
 // 获取用户信息
-export const getUserInfo = (params: any) => {
-    return myRequest(myApiUrl, "/admin/info",params,1).then((res: any) => res.result);
+export const getUserInfoApi = (params: any) => {
+  return myRequest(myApiUrl, '/admin/info', params, 1).then(
+    (res: any) => res.data
+  )
+}
+
+// 登录获取token
+export const loginApi = (params: any) => {
+  return myRequest(myApiUrl, '/admin/login', params, 1).then(
+    (res: any) => res.data
+  )
 }
