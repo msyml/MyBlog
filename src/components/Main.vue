@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header><Header></Header></el-header>
     <el-container>
       <el-aside>Aside</el-aside>
       <el-container>
@@ -13,10 +13,16 @@
 <script lang="ts">
 import { getUserInfoApi } from '../api/api'
 import { Options, Vue } from 'vue-class-component'
+import Header from './Header.vue'
+import qs from 'qs'
 
-@Options({})
-export default class extends Vue {
-  mounted() {
+@Options({
+  components: {
+    Header
+  }
+})
+export default class Main extends Vue {
+  created() {
     this.getInfo()
   }
   async getInfo() {
@@ -24,7 +30,7 @@ export default class extends Vue {
       name: 'chenhai'
     }
     await getUserInfoApi(para).then((result) => {
-      // do
+      localStorage.setItem('userInfo', qs.stringify(result))
     })
   }
 }

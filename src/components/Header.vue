@@ -1,36 +1,66 @@
 <template>
-  <div>
-    <button @click="$router.push('main')">404 Not Found</button>
+  <span style="float:left">
+    Msyml
+  </span>
+  <div class="header_right">
+    当前用户：{{ userInfo.username }} |
+    <el-button type="text" @click="exit" v-loading="loading">退出登录</el-button>
   </div>
 </template>
+
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component'
+import { logoutApi } from '../api/api'
+import qs from 'qs'
+
+@Options({})
+export default class Header extends Vue {
+  private loading = false
+  private userInfo = {}
+
+  mounted() {
+    this.userInfo = qs.parse(localStorage.getItem('userInfo') as string)
+  }
+
+  async exit() {
+    if (this.loading) {
+      return
+    }
+    this.loading = true
+    await logoutApi()
+      .then(() => {
+        localStorage.removeItem('token')
+        this.$router.push('/login')
+      })
+      .finally(() => {
+        this.loading = false
+      })
+  }
+}
+</script>
 <style scoped>
 @import 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap';
 
-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(45deg, #ff013c 3%, #ff013c 5%, #000 5%);
+.header_right {
+  float: right;
+  margin-top: 10px;
 }
 
-button,
-button::after {
-  width: 380px;
-  height: 86px;
-  font-size: 36px;
+span,
+span::after {
+  width: 80px;
+  height: 60px;
+  font-size: 32px;
   font-family: 'Bebas Neue', cursive;
-  background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
   border: 0;
-  color: #fff;
+  color: #000;
   letter-spacing: 3px;
-  line-height: 88px;
-  box-shadow: 6px 0px 0px #00e6f6;
+  line-height: 48px;
   outline: transparent;
   position: relative;
 }
 
-button::after {
+span::after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -38,7 +68,7 @@ button::after {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: 'Back Home';
+  content: 'Msyml';
   display: block;
   position: absolute;
   top: 0;
@@ -50,7 +80,7 @@ button::after {
   clip-path: var(--slice-0);
 }
 
-button:hover::after {
+span:hover::after {
   animation: 1s glitch;
   animation-timing-function: steps(2, end);
 }

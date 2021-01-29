@@ -4,23 +4,14 @@
       <h3>系统登录</h3>
       <el-form :model="loginForm">
         <el-form-item prop="username">
-          <el-input
-            prefix-icon="el-icon-user"
-            placeholder="在此输入帐号"
-            v-model="loginForm.username"
-          ></el-input>
+          <el-input prefix-icon="el-icon-user" placeholder="在此输入帐号" v-model="loginForm.username"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input
-            prefix-icon="el-icon-lock"
-            placeholder="在此输入密码"
-            type="password"
-            v-model="loginForm.password"
-          ></el-input>
+          <el-input prefix-icon="el-icon-lock" placeholder="在此输入密码" type="password" v-model="loginForm.password"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button>注册</el-button>
-          <el-button type="primary" @click="Login">登录</el-button>
+          <el-button type="primary" @click="Login" v-loading="loading">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -33,19 +24,28 @@ import { loginApi } from '../api/api'
 
 @Options({})
 export default class Login extends Vue {
+  private loading = false
   private loginForm: LoginForm = {
     username: '',
     password: ''
   }
 
   private async Login() {
+    if (this.loading) {
+      return
+    }
+    this.loading = true
     const para = {
       ...this.loginForm
     }
-    await loginApi(para).then((res) => {
-      localStorage.setItem('token', res.token)
-      this.$router.push('main')
-    })
+    await loginApi(para)
+      .then((res) => {
+        localStorage.setItem('token', res.token)
+        this.$router.push('main')
+      })
+      .finally(() => {
+        this.loading = false
+      })
   }
 }
 </script>
