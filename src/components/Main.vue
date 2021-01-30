@@ -1,10 +1,12 @@
 <template>
   <el-container>
-    <el-header><Header></Header></el-header>
-    <el-container>
-      <el-aside>Aside</el-aside>
+    <el-header width="auto"><Header></Header></el-header>
+    <el-container class="main_body">
+      <Menu></Menu>
       <el-container>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </el-container>
@@ -14,11 +16,13 @@
 import { getUserInfoApi } from '../api/api'
 import { Options, Vue } from 'vue-class-component'
 import Header from './Header.vue'
+import Menu from './Menu.vue'
 import qs from 'qs'
 
 @Options({
   components: {
-    Header
+    Header,
+    Menu
   }
 })
 export default class Main extends Vue {
@@ -35,4 +39,14 @@ export default class Main extends Vue {
   }
 }
 </script>
-<style scoped></style>
+<style scoped>
+.app {
+  height: 100vh;
+}
+.header {
+  border-bottom: 1px solid #eaeaea;
+}
+.el-main {
+  border: 1px solid black;
+}
+</style>

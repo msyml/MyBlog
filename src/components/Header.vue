@@ -1,6 +1,6 @@
 <template>
   <span style="float:left">
-    Msyml
+    Msyml|
   </span>
   <div class="header_right">
     当前用户：{{ userInfo.username }} |
@@ -50,12 +50,12 @@ span,
 span::after {
   width: 80px;
   height: 60px;
-  font-size: 32px;
+  font-size: 48px;
   font-family: 'Bebas Neue', cursive;
   border: 0;
   color: #000;
   letter-spacing: 3px;
-  line-height: 48px;
+  line-height: 60px;
   outline: transparent;
   position: relative;
 }
@@ -68,7 +68,7 @@ span::after {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: 'Msyml';
+  content: '抹上一抹凉';
   display: block;
   position: absolute;
   top: 0;
