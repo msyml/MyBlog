@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container v-loading="loading">
     <el-header width="auto"><Header></Header></el-header>
     <el-container class="main_body">
       <Menu></Menu>
@@ -26,16 +26,25 @@ import qs from 'qs'
   }
 })
 export default class Main extends Vue {
+  private loading = false
   created() {
     this.getInfo()
   }
   async getInfo() {
+    if (this.loading) {
+      return
+    }
+    this.loading = true
     const para = {
       name: 'chenhai'
     }
-    await getUserInfoApi(para).then((result) => {
-      localStorage.setItem('userInfo', qs.stringify(result))
-    })
+    await getUserInfoApi(para)
+      .then((result) => {
+        localStorage.setItem('userInfo', qs.stringify(result))
+      })
+      .finally(() => {
+        this.loading = false
+      })
   }
 }
 </script>
@@ -45,8 +54,5 @@ export default class Main extends Vue {
 }
 .header {
   border-bottom: 1px solid #eaeaea;
-}
-.el-main {
-  border: 1px solid black;
 }
 </style>
