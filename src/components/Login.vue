@@ -1,7 +1,7 @@
 <template>
   <div class="login_body">
     <el-card shadow="always" class="login_card">
-      <h3>系统登录</h3>
+      <h2>系统登录</h2>
       <el-form :model="loginForm">
         <el-form-item prop="username">
           <el-input prefix-icon="el-icon-user" placeholder="在此输入帐号" v-model="loginForm.username"></el-input>
@@ -10,7 +10,7 @@
           <el-input prefix-icon="el-icon-lock" placeholder="在此输入密码" type="password" v-model="loginForm.password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button>注册</el-button>
+          <el-button>游客模式</el-button>
           <el-button type="primary" @click="Login" v-loading="loading">登录</el-button>
         </el-form-item>
       </el-form>
@@ -57,6 +57,11 @@ export default class Login extends Vue {
   justify-content: center;
   align-items: center;
 }
+
+.el-form {
+  margin-top: 2vh;
+}
+
 .login_card {
   width: 48vh;
 }
