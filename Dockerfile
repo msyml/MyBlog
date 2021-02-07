@@ -1,4 +1,5 @@
 FROM node
+RUN npm install -g npm
 RUN npm install
 
 FROM nginx
