@@ -1,5 +1,5 @@
 FROM node
-RUN npm install build
+RUN npm run build
 
 FROM nginx
 COPY dist/ /usr/share/nginx/html/
