@@ -1,5 +1,5 @@
 FROM node
-RUN npm install -g npm
+RUN npm install -g npm@7.5.2
 RUN npm install
 
 FROM nginx
