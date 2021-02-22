@@ -1,4 +1,4 @@
 export default {
   openApiUrl: 'https://api.apiopen.top',
-  myApiUrl: 'http://localhost:8080'
+  myApiUrl: 'http://localhost:8088'
 }

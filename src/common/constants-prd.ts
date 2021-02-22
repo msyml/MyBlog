@@ -1,4 +1,4 @@
 export default {
   openApiUrl: 'https://api.apiopen.top',
-  myApiUrl: ''
+  myApiUrl: 'http://msyml.cn:8088'
 }
