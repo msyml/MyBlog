@@ -2,6 +2,25 @@
   <router-view />
 </template>
 
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component'
+@Options({})
+export default class Login extends Vue {
+  mounted() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    sessionStorage.setItem('isMobile', !!this.isMobile())
+  }
+
+  isMobile() {
+    // eslint-disable-next-line require-unicode-regexp
+    const flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+    console.log('isMobile', flag)
+    return flag
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

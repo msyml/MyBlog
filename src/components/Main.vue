@@ -1,7 +1,10 @@
 <template>
   <el-container>
     <el-header>Header</el-header>
-    <el-main>Main</el-main>
+    <el-main>
+      <p v-if="isMobile">Mobile</p>
+      <p v-else>pc</p>
+    </el-main>
     <el-footer>
       <p>浙ICP备2021005058号</p>
       <p>抹上一抹凉</p>
@@ -20,8 +23,10 @@ import qs from 'qs'
 })
 export default class Main extends Vue {
   private loading = false;
+  private isMobile = true;
   created() {
     this.getInfo()
+    this.isMobile = sessionStorage.getItem('isMobile') === 'true'
   }
   async getInfo() {
     if (this.loading) {
