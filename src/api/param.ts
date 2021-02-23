@@ -10,6 +10,7 @@ export enum RequestMethod {
 
 export interface MyResponse {
   code: number
+  // @typescript-eslint/no-explicit-any
   data: any
   message: string
 }

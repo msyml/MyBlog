@@ -52,13 +52,14 @@ const resHandle = (code: number) => {
 export function myRequest(
   baseUrl: string,
   url: string,
-  params = {},
+  params?: object,
   method?: RequestMethod
 ) {
   return new Promise((resolve, reject) => {
     const header = {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token')
+      'Access-Control-Allow-Headers': 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild',
+      Authorization: 'Bearer ' + localStorage.getItem('token') ? 'Bearer ' + localStorage.getItem('token') : null
     }
     if (method === null || method === RequestMethod.POST) {
       axios

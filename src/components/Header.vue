@@ -4,7 +4,12 @@
   </span>
   <div class="header_right">
     当前用户：{{ userInfo.username }} |
-    <el-button type="text" @click="exit" v-loading="loading">退出登录</el-button>
+    <el-button
+type="text"
+@click="exit"
+v-loading="loading"
+      >退出登录</el-button
+    >
   </div>
 </template>
 
@@ -15,8 +20,8 @@ import qs from 'qs'
 
 @Options({})
 export default class Header extends Vue {
-  private loading = false
-  private userInfo = {}
+  private loading = false;
+  private userInfo = {};
 
   mounted() {
     this.userInfo = qs.parse(localStorage.getItem('userInfo') as string)
@@ -26,11 +31,11 @@ export default class Header extends Vue {
     if (this.loading) {
       return
     }
+    this.$router.push('/login')
     this.loading = true
     await logoutApi()
       .then(() => {
         localStorage.removeItem('token')
-        this.$router.push('/login')
       })
       .finally(() => {
         this.loading = false
@@ -39,7 +44,7 @@ export default class Header extends Vue {
 }
 </script>
 <style scoped>
-@import 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap';
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap";
 
 .header_right {
   float: right;
@@ -51,7 +56,7 @@ span::after {
   width: 80px;
   height: 60px;
   font-size: 48px;
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
   border: 0;
   color: #000;
   letter-spacing: 3px;
@@ -68,14 +73,20 @@ span::after {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: '抹上一抹凉';
+  content: "抹上一抹凉";
   display: block;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    #00e6f6 3%,
+    #00e6f6 5%,
+    #ff013c 5%
+  );
   text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
   clip-path: var(--slice-0);
 }

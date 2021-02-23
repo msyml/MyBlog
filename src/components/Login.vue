@@ -1,3 +1,4 @@
+/* eslint-disable vue/no-deprecated-v-on-native-modifier */
 <template>
   <div class="login_body">
     <el-card shadow="always" class="login_card">
@@ -7,7 +8,7 @@
           <el-input prefix-icon="el-icon-user" placeholder="在此输入帐号" v-model="loginForm.username"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input prefix-icon="el-icon-lock" placeholder="在此输入密码" type="password" v-model="loginForm.password"></el-input>
+          <el-input prefix-icon="el-icon-lock" @keyup.enter="Login" placeholder="在此输入密码" type="password"  v-model="loginForm.password"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button>游客模式</el-button>
@@ -65,6 +66,7 @@ export default class Login extends Vue {
 
 .login_card {
   width: 48vh;
+  min-width: 360px;
 }
 
 .el-button {

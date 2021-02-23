@@ -7,7 +7,10 @@ const routes = [
   {
     path: '/Main',
     name: 'Main',
-    component: Main
+    component: Main,
+    meta: {
+      title: '抹上一抹凉'
+    }
   },
   {
     path: '/login',
@@ -31,6 +34,9 @@ const router = createRouter({
 
 // 路由跳转前判断
 router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
   if (to.path === '/') {
     next({ path: '/login' })
   } else {
