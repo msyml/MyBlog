@@ -66,7 +66,6 @@ export function myRequest(
         .post(url, params, { headers: header, baseURL: baseUrl })
         .then((res) => {
           if (resHandle(res.data.code)) {
-            ElMessage.success(res.data.message)
             resolve(res.data)
           }
         })

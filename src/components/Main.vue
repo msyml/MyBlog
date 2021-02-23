@@ -1,32 +1,25 @@
 <template>
-  <el-container v-loading="loading">
-    <el-header width="auto"><Header></Header></el-header>
-    <el-container class="main_body">
-      <Menu></Menu>
-      <el-container>
-        <el-main>
-          <router-view></router-view>
-        </el-main>
-      </el-container>
-    </el-container>
+  <el-container>
+    <el-header>Header</el-header>
+    <el-main>Main</el-main>
+    <el-footer>
+      <p>浙ICP备2021005058号</p>
+      <p>抹上一抹凉</p>
+    </el-footer>
   </el-container>
 </template>
 
 <script lang="ts">
 import { getUserInfoApi } from '../api/api'
 import { Options, Vue } from 'vue-class-component'
-import Header from './Header.vue'
-import Menu from './Menu.vue'
 import qs from 'qs'
 
 @Options({
   components: {
-    Header,
-    Menu
   }
 })
 export default class Main extends Vue {
-  private loading = false
+  private loading = false;
   created() {
     this.getInfo()
   }
@@ -39,7 +32,7 @@ export default class Main extends Vue {
       name: 'chenhai'
     }
     await getUserInfoApi(para)
-      .then((result) => {
+      .then(result => {
         localStorage.setItem('userInfo', qs.stringify(result))
       })
       .finally(() => {
@@ -48,11 +41,13 @@ export default class Main extends Vue {
   }
 }
 </script>
-<style scoped>
-.app {
-  height: 100vh;
-}
-.header {
-  border-bottom: 1px solid #eaeaea;
+<style lang="scss" scoped>
+.el-container{
+  .el-header {
+    top: 0;
+  }
+  .el-footer {
+    bottom: 0;
+  }
 }
 </style>
