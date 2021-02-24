@@ -1,13 +1,15 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header>
+      <Header></Header>
+    </el-header>
     <el-main>
       <p v-if="isMobile">Mobile</p>
       <p v-else>pc</p>
     </el-main>
     <el-footer>
-      <p>浙ICP备2021005058号</p>
-      <p>抹上一抹凉</p>
+      <!-- <p>浙ICP备2021005058号</p>
+      <p>抹上一抹凉</p> -->
     </el-footer>
   </el-container>
 </template>
@@ -16,9 +18,11 @@
 import { getUserInfoApi } from '../api/api'
 import { Options, Vue } from 'vue-class-component'
 import qs from 'qs'
+import Header from './Header.vue'
 
 @Options({
   components: {
+    Header
   }
 })
 export default class Main extends Vue {

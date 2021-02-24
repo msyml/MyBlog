@@ -59,6 +59,7 @@ export function myRequest(
     const header = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild',
+      WithCredentials: true,
       Authorization: 'Bearer ' + localStorage.getItem('token') ? 'Bearer ' + localStorage.getItem('token') : null
     }
     if (method === null || method === RequestMethod.POST) {
