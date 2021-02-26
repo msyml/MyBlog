@@ -4,8 +4,7 @@
       <Header></Header>
     </el-header>
     <el-main>
-      <p v-if="isMobile">Mobile</p>
-      <p v-else>pc</p>
+      <router-view></router-view>
     </el-main>
     <el-footer>
       <!-- <p>浙ICP备2021005058号</p>
@@ -51,7 +50,7 @@ export default class Main extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.el-container{
+.el-container {
   .el-header {
     top: 0;
   }

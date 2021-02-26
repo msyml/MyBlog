@@ -365,5 +365,6 @@ module.exports = {
         "symbol-description": 0, // 要求 symbol 描述
         "template-curly-spacing": [2, 'never'], // 要求或禁止模板字符串中的嵌入表达式周围空格的使用
         "yield-star-spacing": [2, 'both'], // 强制在 yield* 表达式中 * 周围使用空格
+        "@typescript-eslint/no-explicit-any": ["off"]
     }
 };

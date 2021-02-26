@@ -52,8 +52,8 @@ const resHandle = (code: number) => {
 export function myRequest(
   baseUrl: string,
   url: string,
-  params?: object,
-  method?: RequestMethod
+  method?: RequestMethod,
+  params?: object
 ) {
   return new Promise((resolve, reject) => {
     const header = {
