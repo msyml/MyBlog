@@ -7,8 +7,8 @@
       <router-view></router-view>
     </el-main>
     <el-footer>
-      <!-- <p>浙ICP备2021005058号</p>
-      <p>抹上一抹凉</p> -->
+      <p>浙ICP备2021005058号</p>
+      <p>@抹上一抹凉</p>
     </el-footer>
   </el-container>
 </template>
@@ -51,11 +51,17 @@ export default class Main extends Vue {
 </script>
 <style lang="scss" scoped>
 .el-container {
+  overflow: auto;
+  height: 100vh;
   .el-header {
     top: 0;
   }
   .el-footer {
     bottom: 0;
+    p {
+      font-size: 10px;
+      color: rgb(190, 175, 175);
+    }
   }
 }
 </style>
