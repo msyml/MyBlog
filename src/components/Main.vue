@@ -7,6 +7,7 @@
       <router-view></router-view>
     </el-main>
     <el-footer>
+      <img src='../assets/beian.png'/>浙公网安备 33032402002173号
       <p>浙ICP备2021005058号</p>
       <p>@抹上一抹凉</p>
     </el-footer>
