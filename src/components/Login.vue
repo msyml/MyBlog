@@ -30,7 +30,10 @@ v-loading="loading"
           >
         </el-form-item>
       </el-form>
-      浙ICP备2021005058号
+      <img src="../assets/beian.png" />浙公网安备 33032402002173号
+      <p>
+        浙ICP备2021005058号
+      </p>
     </el-card>
   </div>
 </template>
@@ -74,16 +77,16 @@ export default class Login extends Vue {
   justify-content: center;
   align-items: center;
   .login_card {
-      width: 48vh;
-      min-width: 360px;
-      .el-form {
-          margin-top: 2vh;
-          .el-form-item{
-              .el-button {
-                  width: 48%;
-              }
-          }
+    width: 48vh;
+    min-width: 360px;
+    .el-form {
+      margin-top: 2vh;
+      .el-form-item {
+        .el-button {
+          width: 48%;
+        }
       }
+    }
   }
 }
 </style>
